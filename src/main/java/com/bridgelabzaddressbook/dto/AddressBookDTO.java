@@ -1,22 +1,10 @@
-package com.bridgelabzaddressbook.model;
-
-import com.bridgelabzaddressbook.dto.AddressBookDTO;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
-public class AddressBook {
+package com.bridgelabzaddressbook.dto;
 
 
-    @Id
-    @GeneratedValue
+import lombok.Data;
 
 
-    private long Id;
+public class AddressBookDTO {
 
     private String fullName;
 
@@ -30,36 +18,16 @@ public class AddressBook {
 
     private String phone;
 
-    public AddressBook(long id, String fullName, String address, String state, String city, String zip, String phone) {
-        Id = id;
+    public AddressBookDTO() {
+    }
+
+    public AddressBookDTO(String fullName, String address, String state, String city, String zip, String phone) {
         this.fullName = fullName;
         this.address = address;
         this.state = state;
         this.city = city;
         this.zip = zip;
         this.phone = phone;
-    }
-
-    public AddressBook() {
-
-    }
-
-  public AddressBook(AddressBookDTO addressBookdto){
-        this.fullName=addressBookdto.getFullName();
-        this.address=addressBookdto.getAddress();
-        this.city=addressBookdto.getCity();
-        this.state=addressBookdto.getState();
-        this.zip=addressBookdto.getZip();
-        this.phone=addressBookdto.getPhone();
-  }
-
-
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long id) {
-        Id = id;
     }
 
     public String getFullName() {
@@ -97,6 +65,7 @@ public class AddressBook {
     public String getZip() {
         return zip;
     }
+
     public void setZip(String zip) {
         this.zip = zip;
     }
@@ -105,15 +74,15 @@ public class AddressBook {
         return phone;
     }
 
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
     @Override
     public String toString() {
-        return "AddressBook{" +
-                "Id=" + Id +
-                ", fullName='" + fullName + '\'' +
+        return "AddressBookDTO{" +
+                "fullName='" + fullName + '\'' +
                 ", address='" + address + '\'' +
                 ", state='" + state + '\'' +
                 ", city='" + city + '\'' +
@@ -122,4 +91,3 @@ public class AddressBook {
                 '}';
     }
 }
-

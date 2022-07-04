@@ -1,5 +1,6 @@
 package com.bridgelabzaddressbook.service;
 
+import com.bridgelabzaddressbook.dto.AddressBookDTO;
 import com.bridgelabzaddressbook.model.AddressBook;
 import com.bridgelabzaddressbook.repository.IaddressBookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class AddressBookService implements IAddressBookService {
     }
 
     @Override
-    public String AddAddressBook(AddressBook addressBook) {
+    public String AddAddressBook(AddressBookDTO addressBookdto) {
+        AddressBook addressBook=new AddressBook(addressBookdto);
         repo.save(addressBook);
         return addressBook.toString();
 
@@ -36,13 +38,14 @@ public class AddressBookService implements IAddressBookService {
         List<AddressBook> contacts = repo.findAll();
         return contacts;
     }
+
     @Override
     public void deleteContact(long id) {
         repo.deleteById((long) id);
 
     }
     @Override
-    public AddressBook updateContact(long getId, AddressBook addressBook) {
+    public AddressBook updateContact(long getId, AddressBookDTO addressBook) {
         Optional<AddressBook> newContact = repo.findById((long) getId);
         if (newContact.isPresent()) {
             newContact.get().setFullName(addressBook.getFullName());

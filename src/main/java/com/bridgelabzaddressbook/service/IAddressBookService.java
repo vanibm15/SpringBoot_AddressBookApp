@@ -1,5 +1,6 @@
 package com.bridgelabzaddressbook.service;
 
+import com.bridgelabzaddressbook.dto.AddressBookDTO;
 import com.bridgelabzaddressbook.model.AddressBook;
 
 import java.util.List;
@@ -9,7 +10,8 @@ public interface IAddressBookService {
     String getMessage();
 
 
-    String AddAddressBook(AddressBook addressBook);
+
+    String AddAddressBook(AddressBookDTO addressBookdto);
 
     AddressBook getContactId(long getId);
 
@@ -17,5 +19,5 @@ public interface IAddressBookService {
 
     void deleteContact(long id);
 
-    AddressBook updateContact(long getId, AddressBook addressBook);
+    AddressBook updateContact(long getId, AddressBookDTO addressBookdto);
 }
