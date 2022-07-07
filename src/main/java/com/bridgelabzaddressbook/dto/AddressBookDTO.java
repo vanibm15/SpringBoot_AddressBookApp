@@ -1,93 +1,45 @@
 package com.bridgelabzaddressbook.dto;
 
-
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.ToString;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 
+@Data
+@NoArgsConstructor
+@ToString
 public class AddressBookDTO {
 
+
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z]{2,}$", message = "Invalid Name")
     private String fullName;
 
+    @NotNull(message = "address should not be null")
     private String address;
 
+    @NotNull(message = "state should not be null")
     private String state;
 
+    @NotNull(message = "city should not be null")
     private String city;
 
+    @NotBlank(message = "Zip cannot be null")
     private String zip;
 
+    @NotNull(message = "phone number should not be null")
     private String phone;
 
-    public AddressBookDTO() {
-    }
-
-    public AddressBookDTO(String fullName, String address, String state, String city, String zip, String phone) {
-        this.fullName = fullName;
-        this.address = address;
-        this.state = state;
-        this.city = city;
-        this.zip = zip;
-        this.phone = phone;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
+    private String email;
 
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
-    @Override
-    public String toString() {
-        return "AddressBookDTO{" +
-                "fullName='" + fullName + '\'' +
-                ", address='" + address + '\'' +
-                ", state='" + state + '\'' +
-                ", city='" + city + '\'' +
-                ", zip='" + zip + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
 }
+
+
+
+
+
